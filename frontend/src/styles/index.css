@@ -1,0 +1,167 @@
+/* ─── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ─── CSS Variables ─────────────────────────────────────────────────────────── */
+:root {
+  --gold: #c9a84c;
+  --gold-light: #f0c53b;
+  --navy: #0a0a1a;
+  --navy-mid: #0f0f2d;
+  --navy-light: #141440;
+  --glass-bg: rgba(255,255,255,0.04);
+  --glass-border: rgba(201,168,76,0.15);
+  --text-primary: #f5f0e8;
+  --text-muted: rgba(245,240,232,0.6);
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background-color: #0a0a1a;
+  color: #f5f0e8;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a1a; }
+::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #c9a84c; }
+
+/* ─── Selection ─────────────────────────────────────────────────────────────── */
+::selection { background: rgba(201,168,76,0.3); color: #f5f0e8; }
+
+/* ─── Utility Classes ───────────────────────────────────────────────────────── */
+@layer components {
+  .glass {
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .glass-dark {
+    background: rgba(10,10,26,0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .gold-text {
+    background: linear-gradient(135deg, #c9a84c, #f0c53b, #c9a84c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gold-border {
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .gold-border-hover:hover {
+    border-color: rgba(201,168,76,0.6);
+  }
+
+  .btn-gold {
+    @apply bg-gold-500 hover:bg-gold-400 text-navy-900 font-semibold px-6 py-3 rounded-xl
+           transition-all duration-300 hover:shadow-gold hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-outline-gold {
+    @apply border border-gold-500 text-gold-400 hover:bg-gold-500 hover:text-navy-900
+           font-semibold px-6 py-3 rounded-xl transition-all duration-300;
+  }
+
+  .card {
+    @apply glass rounded-2xl overflow-hidden transition-all duration-300
+           hover:shadow-card-hover hover:-translate-y-1;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-bold;
+    background: linear-gradient(135deg, #f5f0e8, #c9a84c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .input-dark {
+    @apply w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white
+           placeholder:text-white/40 focus:outline-none focus:border-gold-500/50
+           transition-all duration-200;
+  }
+
+  .skeleton {
+    @apply bg-white/5 animate-pulse rounded-lg;
+    background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Star Rating */
+  .stars { color: #c9a84c; }
+
+  /* Offline Badge */
+  .offline-badge {
+    @apply fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-red-500 text-white
+           px-4 py-2 rounded-full text-sm font-medium shadow-lg;
+  }
+}
+
+/* ─── Leaflet Map Overrides ─────────────────────────────────────────────────── */
+.leaflet-container {
+  background: #141440 !important;
+  font-family: 'DM Sans', sans-serif;
+}
+.leaflet-popup-content-wrapper {
+  background: #0f0f2d;
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 12px;
+  color: #f5f0e8;
+}
+.leaflet-popup-tip { background: #0f0f2d; }
+
+/* ─── Page Transitions ──────────────────────────────────────────────────────── */
+.page-enter { opacity: 0; transform: translateY(10px); }
+.page-enter-active { opacity: 1; transform: translateY(0); transition: all 0.3s ease; }
+.page-exit { opacity: 1; }
+.page-exit-active { opacity: 0; transition: opacity 0.2s ease; }
+
+/* ─── QR Scanner Override ───────────────────────────────────────────────────── */
+#qr-reader { background: transparent !important; border: none !important; }
+#qr-reader__scan_region { border-radius: 12px; overflow: hidden; }
+#qr-reader video { border-radius: 12px; }
+#qr-reader__dashboard { background: rgba(10,10,26,0.9) !important; border-top: 1px solid rgba(201,168,76,0.2) !important; }
+#qr-reader__dashboard_section_swaplink { color: #c9a84c !important; }
+
+/* ─── Range Slider ──────────────────────────────────────────────────────────── */
+input[type='range'] { accent-color: #c9a84c; }
+
+/* ─── Animations ────────────────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeInUp { animation: fadeInUp 0.6s ease forwards; }
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }

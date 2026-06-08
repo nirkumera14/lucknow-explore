@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Build
+dist/
+build/
+.vite/
+
+# Uploads (don't commit real images)
+backend/uploads/places/*.jpg
+backend/uploads/places/*.png
+backend/uploads/places/*.webp
+backend/uploads/events/*.jpg
+backend/uploads/hotels/*.jpg
+backend/uploads/restaurants/*.jpg
+backend/uploads/food/*.jpg
+backend/uploads/avatars/*.jpg
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Coverage
+coverage/

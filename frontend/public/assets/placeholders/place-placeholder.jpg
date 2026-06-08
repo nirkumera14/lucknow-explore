@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#141440"/>
+  <rect x="160" y="100" width="80" height="60" fill="none" stroke="#c9a84c" stroke-width="2" rx="4"/>
+  <circle cx="190" cy="125" r="12" fill="none" stroke="#c9a84c" stroke-width="2"/>
+  <line x1="160" y1="160" x2="400" y2="160" stroke="#c9a84c" stroke-width="2"/>
+  <text x="200" y="195" font-family="Arial" font-size="13" fill="#c9a84c" text-anchor="middle">ADD PLACE IMAGE</text>
+  <text x="200" y="215" font-family="Arial" font-size="10" fill="#8888aa" text-anchor="middle">Upload via Admin Panel</text>
+</svg>
